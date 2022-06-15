@@ -25,3 +25,4 @@ rootProject.name = "testnewKotlin"
 include (":app")
 include(":mylibrary")
 include(":mylibrary2")
+include(":kotlinstand")
