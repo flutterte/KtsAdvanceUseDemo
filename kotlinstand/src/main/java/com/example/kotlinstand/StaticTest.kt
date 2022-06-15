@@ -40,7 +40,9 @@ data class DataCls(val name: String) {
  * object 命名的所有皆为静态
  */
 object ObjectEmblishA{
-  val  name:String="hello"
+    //字段 要在java里面访问 必须指定静态并且用get方法，否则只能用伴生。
+    @JvmStatic
+  open val  name:String="hello"
     fun test(){
 
     }
@@ -54,13 +56,22 @@ object ObjectEmblishA{
         return "hhh"
     }
 
+    /**
+     * 在java 是无法访问这个的，在java属于对象
+     */
+    fun test122():String{
+        return "hhh"
+    }
+
+
 
 }
 
 fun main(args:Array<String>):Unit{
     val cls=DataCls("hello")
     print("datacls${cls.name}")
-    print("object static ${ObjectEmblishA.name} ${ObjectEmblishA.test()}")//object 修饰皆为静态
+    ObjectEmblishA.test122()
+    print("object static ${ObjectEmblishA.name} ${ObjectEmblishA.test()}")//object 修饰皆为静态吗,在使用  java访问的时候发现不行了
     print("static method ${StaticTest.getVersion()} static field ${StaticTest.VERSION} ")
 
 }
